@@ -8,17 +8,18 @@
 
 <h1> Création d'un nouvel artiste </h1>
 
-<form action="index.php?controller=artists&action=add" method="post" enctype="multipart/form-data">
+<form action="index.php?controller=artists&action=<?= isset($artist) ? 'edit&id='.$artist['id'] : 'add';  ?>" method="post" enctype="multipart/form-data">
 
     <!-- Nom de l'artiste -->
     <label for="name"> Nom : </label>
-    <input type="text" name="name" id="name">
+    <input type="text" name="name" id="name" value="<?= isset($artist) ? $artist['name'] : '' ?>">
     <br><br>
 
     <!-- Biography de l'artiste -->
     <label for="description"> Description : </label>
     <textarea name="description" id="description" rows="5" cols="33" >
-        <?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['description'] : '' ?>
+        <?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['description'] : '' //On prérempli le formulaire si il y a des old inputs ?>
+        <?= isset($artist) ? $artist['biography'] : '' //test si on est en mode édition d'un artiste ou non ?>
     </textarea>
     <br><br>
 

@@ -1,5 +1,6 @@
 <?php
 
+    //Fonction qui retourne tous les artistes
     function getAllArtist()
     {
 
@@ -76,6 +77,39 @@
 
             }
         }
+
+        return $result;
+    }
+
+    //Fonction qui retourne un artiste en particulier
+    function getArtist($id)
+    {
+        //Requete de connexion
+        $db = dbConnect();
+
+        $query = $db->prepare ('SELECT * FROM artist WHERE id=?');
+
+        $query->execute([
+            $id
+        ]);
+
+        $result = $query->fetch();
+
+        return $result; //Retourne de l'artiste en question
+    }
+
+    //Fonction qui va updater les valeurs d'un artiste
+    function updateArtist($id, $informations)
+    {
+        $db = dbConnect();
+
+        $query = $db->prepare('UPDATE artist SET name = ?, biography = ? WHERE id = ?');
+
+        $result = $query->execute([
+            $informations['name'],
+            $informations['description'],
+            $id
+        ]);
 
         return $result;
     }

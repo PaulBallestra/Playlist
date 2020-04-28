@@ -51,7 +51,26 @@
                 break;
 
             case 'edit': //Pour modification d'un artiste
-                require ('views/artistViews/artistEdit.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+
+
+                if(!empty($_POST)){
+
+                    $result = updateArtist($_GET['id'], $_POST);
+
+                    if($result)
+                        $_SESSION['message'] = 'Artiste mis à jour !';
+                    else
+                        $_SESSION['message'] = 'Erreur lors de la mise à jour de l\'artiste.';
+
+                    header('Location: index.php?controller=artists&action=list'); //redirection vers la liste des artistes
+                    exit;
+
+                }else{
+                    //On va chercher les infos de l'artiste pour préremplir le formulaire
+                    $artist = getArtist($_GET['id']); //On stocke l'artiste renvoyé par la fonction getArtist
+                    require ('views/artistViews/artistNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                }
+
                 break;
 
             case 'delete': //Pour suppression d'un artiste
@@ -59,9 +78,9 @@
                 $result = delete($_GET['id']);
 
                 if($result)
-                    $_SESSION['L\'artiste a bien été supprimé !'];
+                    $_SESSION['message'] = 'L\'artiste a bien été supprimé !';
                 else
-                    $_SESSION['Erreur lors de la suppresion...'];
+                    $_SESSION['message'] = 'Erreur lors de la suppresion...';
 
                 header('Location: index.php?controller=artists&action=list'); //redirection vers la liste des artistes
                 exit;

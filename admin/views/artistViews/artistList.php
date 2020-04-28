@@ -10,6 +10,10 @@
 
 <?php foreach ($artists as $artist): ?>
 
-    <p> <?= $artist['name'] ?> <a href="index.php?controller=artists&action=delete&id=<?= $artist['id'] ?>"> Supprimer </a></p>
+    <p> <?= $artist['name'] ?>
+        <a href="index.php?controller=artists&action=edit&id=<?= $artist['id'] ?>"> Modifier </a> <!-- Lien vers la modification d'un artiste -->
+        <a href="index.php?controller=artists&action=delete&id=<?= $artist['id'] ?>"> Supprimer </a> <!-- Lien vers la suppresion d'un artiste -->
+    </p>
+
 
 <?php endforeach; ?>
