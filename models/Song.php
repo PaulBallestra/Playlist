@@ -5,10 +5,10 @@ function getSongs($albumId = false){
 
 
     if($albumId != false){
-        $selectedSongs = dbConnect()->query('SELECT * FROM song WHERE album_id ="'.$albumId.'"')->fetchAll();
+        $selectedSongs = dbConnect()->query('SELECT * FROM songs WHERE album_id ="'.$albumId.'"')->fetchAll();
     }
     else{
-      $selectedSongs = dbConnect()->query('SELECT * FROM song')->fetchAll();
+      $selectedSongs = dbConnect()->query('SELECT * FROM songs')->fetchAll();
     }
 
     return $selectedSongs;

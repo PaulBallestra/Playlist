@@ -6,10 +6,27 @@
 
         $db = dbConnect();
 
-        $query = $db->query('SELECT * FROM artist');
+        $query = $db->query('SELECT * FROM artists');
         $artists = $query->fetchAll();
 
         return $artists;
+    }
+
+    //Fonction qui retourne un artiste en particulier
+    function getArtist($id)
+    {
+        //Requete de connexion
+        $db = dbConnect();
+
+        $query = $db->prepare ('SELECT * FROM artists WHERE id=?');
+
+        $query->execute([
+            $id
+        ]);
+
+        $result = $query->fetch();
+
+        return $result; //Retourne de l'artiste en question
     }
 
     //Fonction qui retourne vrai ou faux si il a réussi a supprimer l'artiste ayant pour id id
@@ -17,7 +34,7 @@
     {
         $db = dbConnect();
 
-        $query = $db->prepare('DELETE FROM artist WHERE id=?');
+        $query = $db->prepare('DELETE FROM artists WHERE id=?');
         $result = $query->execute([
             $id
         ]);
@@ -52,10 +69,11 @@
         } */
 
         //Après traitement et upload, j'ai mon nom de fichier
-        $query = $db->prepare('INSERT INTO artist (name, biography) VALUES(:name, :biography)');
+        $query = $db->prepare('INSERT INTO artists (name, biography, label_id) VALUES(:name, :biography, :label_id)');
         $result = $query->execute([
             'name' => $informations['name'],
             'biography' => $informations['description'],
+            'label_id' => $informations['label_id']
             //'image' => $new_file_name
         ]);
 
@@ -73,7 +91,7 @@
                 $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
                 //update du nom de l'image de l'enregistrement d'id
-                $query = $db->query("UPDATE artist SET image = '$new_file_name' WHERE id = $artistId");
+                $query = $db->query("UPDATE artists SET image = '$new_file_name' WHERE id = $artistId");
 
             }
         }
@@ -81,29 +99,12 @@
         return $result;
     }
 
-    //Fonction qui retourne un artiste en particulier
-    function getArtist($id)
-    {
-        //Requete de connexion
-        $db = dbConnect();
-
-        $query = $db->prepare ('SELECT * FROM artist WHERE id=?');
-
-        $query->execute([
-            $id
-        ]);
-
-        $result = $query->fetch();
-
-        return $result; //Retourne de l'artiste en question
-    }
-
     //Fonction qui va updater les valeurs d'un artiste
     function updateArtist($id, $informations)
     {
         $db = dbConnect();
 
-        $query = $db->prepare('UPDATE artist SET name = ?, biography = ? WHERE id = ?');
+        $query = $db->prepare('UPDATE artists SET name = ?, biography = ? WHERE id = ?');
 
         $result = $query->execute([
             $informations['name'],
@@ -113,5 +114,4 @@
 
         return $result;
     }
-
 ?>

@@ -4,10 +4,10 @@ function getArtists($artistId = null){
     $selectedArtists = [];
 
     if($artistId != false){
-        $selectedArtists = dbConnect()->query('SELECT * FROM artist WHERE artist_id ="'.$artistId.'"');
+        $selectedArtists = dbConnect()->query('SELECT * FROM artists WHERE artist_id ="'.$artistId.'"');
     }
     else{
-        $selectedArtists = dbConnect()->query('SELECT * FROM artist')->fetchAll();
+        $selectedArtists = dbConnect()->query('SELECT * FROM artists')->fetchAll();
     }
 
     return $selectedArtists;

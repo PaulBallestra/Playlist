@@ -8,11 +8,24 @@
 
 <h1> Création d'un nouvel artiste </h1>
 
-<form action="index.php?controller=artists&action=<?= isset($artist) ? 'edit&id='.$artist['id'] : 'add';  ?>" method="post" enctype="multipart/form-data">
+<form action="index.php?controller=artists&action=<?= isset($artist) || (isset($_SESSION['old_inputs']) && $_GET['action'] == 'edit') ? 'edit&id='.$_GET['id'] : 'add';  ?>" method="post" enctype="multipart/form-data">
 
     <!-- Nom de l'artiste -->
     <label for="name"> Nom : </label>
     <input type="text" name="name" id="name" value="<?= isset($artist) ? $artist['name'] : '' ?>">
+    <br><br>
+
+    <!-- Label de l'artiste -->
+    <label for="label_id"> Label : </label>
+    <select name="label_id" id="label_id">
+        
+        <?php foreach ($labels as $label): ?>
+
+            <option value=<?= $label['id'] ?>> <?= $label['name'] ?> </option> <!-- value est la valeur retournée en post -->
+
+        <?php endforeach; ?>
+
+    </select>
     <br><br>
 
     <!-- Biography de l'artiste -->
