@@ -104,11 +104,12 @@
     {
         $db = dbConnect();
 
-        $query = $db->prepare('UPDATE artists SET name = ?, biography = ? WHERE id = ?');
+        $query = $db->prepare('UPDATE artists SET name = ?, biography = ?, label_id = ? WHERE id = ?');
 
         $result = $query->execute([
             $informations['name'],
             $informations['description'],
+            $informations['label_id'],
             $id
         ]);
 

@@ -18,10 +18,14 @@
     <!-- Label de l'artiste -->
     <label for="label_id"> Label : </label>
     <select name="label_id" id="label_id">
-        
+
         <?php foreach ($labels as $label): ?>
 
-            <option value=<?= $label['id'] ?>> <?= $label['name'] ?> </option> <!-- value est la valeur retournée en post -->
+            <!-- On le met en selected pour seulement celui qui est égal -->
+            <option value=<?= $label['id'] ?>
+                <?php if(isset($artist) && $label['id'] == $artist['label_id']) : ?> selected="selected"
+                <?php endif; ?>> <?= $label['name'] ?>
+            </option> <!-- value est la valeur retournée en post -->
 
         <?php endforeach; ?>
 

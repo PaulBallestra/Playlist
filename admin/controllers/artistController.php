@@ -52,6 +52,7 @@
 
             case 'edit': //Pour modification d'un artiste
 
+                $labels = getAllLabels();//on récupère tous les labels
 
                 if(!empty($_POST)){
 
