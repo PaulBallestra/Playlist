@@ -13,8 +13,21 @@ if(isset($_GET['controller'])):
             require 'controllers/artistController.php';
             break;
 
+        case 'songs':
+            require 'controllers/songController.php';
+            break;
+
+        case 'albums':
+            require 'controllers/albumController.php';
+            break;
+
+        case 'labels':
+            require 'controllers/labelController.php';
+            break;
+
         default :
             require 'controllers/indexController.php';
+            break;
 
     endswitch;
 

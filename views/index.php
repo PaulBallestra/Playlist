@@ -1,3 +1,5 @@
+<a href="admin/index.php"> <button> Administration </button> </a>
+
 <table>
 <thead>
   <tr>

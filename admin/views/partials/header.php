@@ -1,1 +1,1 @@
-<div> Header de l'admin </div>
+<div style="text-align: center;"> Header de l'admin </div>

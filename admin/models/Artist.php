@@ -77,7 +77,7 @@
             //'image' => $new_file_name
         ]);
 
-        if($result) {
+        if($result && isset($_FILES['image']['tmp_name'])) { //Si l'ajout s'est bien passé ET qu'il a selectionné un fichier
 
             $artistId = $db->lastInsertId(); //retourne l'id de la dernière ligne insérée
 
@@ -115,4 +115,17 @@
 
         return $result;
     }
+
+    //Fonction qui retourne le nombre d'artistes
+    function getNumberOfArtists()
+    {
+        $db = dbConnect();
+
+        $query = $db->query('SELECT COUNT(id) as nombre FROM artists');
+        $nbArtists = $query->fetch();
+        $query->closeCursor();
+
+        return $nbArtists['nombre'];
+    }
+
 ?>

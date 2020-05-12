@@ -6,7 +6,15 @@
 
 <?php endif; ?>
 
-<h1> Création d'un nouvel artiste </h1>
+<?php if($_GET['action'] == 'edit'): ?>
+
+    <h2> Modification d'un artiste </h2>
+
+<?php else : ?>
+
+    <h2> Création d'un nouvel artiste </h2>
+
+<?php endif; ?>
 
 <form action="index.php?controller=artists&action=<?= isset($artist) || (isset($_SESSION['old_inputs']) && $_GET['action'] == 'edit') ? 'edit&id='.$_GET['id'] : 'add';  ?>" method="post" enctype="multipart/form-data">
 
