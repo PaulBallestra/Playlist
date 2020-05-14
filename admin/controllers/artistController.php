@@ -18,7 +18,6 @@
                 break;
 
             case 'new': //Pour création d'un artiste
-
                 $labels = getAllLabels();//on récupère tous les labels
                 require ('views/artistViews/artistNew.php');
                 break;
@@ -40,7 +39,7 @@
                 }else{
                     $informations = $_POST;
 
-                    $result = add($informations); //appel de la fonction d'ajout d'un artiste
+                    $result = addArtist($informations); //appel de la fonction d'ajout d'un artiste
 
                     $_SESSION['message'] = $result ? 'Artiste enregistré !' : 'Erreur lors de l\'enregistrement...';
 
@@ -93,7 +92,7 @@
 
             case 'delete': //Pour suppression d'un artiste
                 //Appel d'une fonction qui supprimera l'artiste
-                $result = delete($_GET['id']);
+                $result = deleteArtist($_GET['id']);
 
                 $_SESSION['message'] = $result ? 'L\'artiste a bien été supprimé !' : 'Erreur lors de la suppresion...';
 

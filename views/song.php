@@ -1,4 +1,4 @@
-<a href="index.php">retour à l'index</a>
+<a href="index.php">Retour à l'index</a>
 
 <p>Chanson : <?= $song['title'] ?></p>
 <p>Artiste :
@@ -9,7 +9,7 @@
     ?>
   </a>
 </p>
-<p>Groupe :
+<p>Album :
   <a href="index.php?p=album&album_id=<?= $song['album_id'] ?>">
     <?php
       $album = getAlbum($song['album_id']);

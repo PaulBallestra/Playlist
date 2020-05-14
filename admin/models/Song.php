@@ -80,7 +80,6 @@
 
     }
 
-
     //Fonction qui va retourne le nombre total de chansons
     function getNumberOfSongs()
     {

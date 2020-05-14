@@ -1,8 +1,10 @@
-<a href="index.php">retour à l'index</a>
+<a href="index.php">Retour à l'index</a>
 
-<p>Nom de l'artistde : <?= $artist['name'] ?></p>
+<p>Nom de l'artiste : <?= $artist['name'] ?></p>
 
-<p>Bio : <?= $artist['biography'] ?></p>
+<p>Label : <?= getLabel($artist['label_id'])['name'] ?></p>
+
+<p>Biographie : <?= $artist['biography'] ?></p>
 
 Albums :
 
@@ -13,5 +15,5 @@ Albums :
   <?php endforeach; ?>
   </ul>
 <?php else: ?>
-  <p>aucun album pour cet artiste</p>
+  <p>Aucun albums pour cet artiste</p>
 <?php endif; ?>

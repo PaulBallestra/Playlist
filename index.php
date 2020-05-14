@@ -1,29 +1,36 @@
 <?php
 
-require 'helpers.php';
+    include 'models/Label.php';
 
-if(isset($_GET['p'])):
+    require 'helpers.php';
 
-    switch ($_GET['p']):
+    if(isset($_GET['p'])):
 
-        case 'album' :
-            require 'controllers/albumController.php';
-            break;
+        switch ($_GET['p']):
 
-        case 'artist' :
-            require 'controllers/artistController.php';
-            break;
+            case 'album' :
+                require 'controllers/albumController.php';
+                break;
 
-        case 'song' :
-            require 'controllers/songController.php';
-            break;
+            case 'artist' :
+                $labels = getAllLabels(); //on chope tous les labels
+                require 'controllers/artistController.php';
+                break;
 
-        default :
-            require 'controllers/indexController.php';
+            case 'song' :
+                require 'controllers/songController.php';
+                break;
 
-    endswitch;
+            case 'label':
+                require 'controllers/labelController.php';
+                break;
 
-else:
-    require 'controllers/indexController.php';
+            default :
+                require 'controllers/indexController.php';
 
-endif;
+        endswitch;
+
+    else:
+        require 'controllers/indexController.php';
+
+    endif;

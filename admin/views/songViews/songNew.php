@@ -30,10 +30,11 @@
 
         <?php foreach ($artists as $artist): ?>
 
+            <!-- On le met en selected pour seulement celui qui est égal -->
             <option value=<?= $artist['id'] ?>
-                <?php if(isset($song) && $artist['id'] == $song['artist_id']) : ?> selected="selected"
+                <?php if((isset($song) && $artist['id'] == $song['artist_id']) || (isset($_SESSION['old_inputs']) && $_SESSION['old_inputs']['artist_id'] == $artist['id'] )) : ?> selected="selected"
                 <?php endif; ?>> <?= $artist['name'] ?>
-            </option>
+            </option> <!-- value est la valeur retournée en post -->
 
         <?php endforeach; ?>
 
@@ -48,12 +49,8 @@
         <?php foreach ($albums as $album): ?>
 
             <option value=<?= $album['id'] ?>
-
-                <?php if(isset($song) && $album['id'] == $song['album_id']) : ?> selected="selected"
-                <?php endif; ?>>
-
-                <?= $album['name'] ?>
-
+                <?php if((isset($song) && $album['id'] == $song['album_id']) || (isset($_SESSION['old_inputs']) && $_SESSION['old_inputs']['album_id'] == $album['id'] )) : ?> selected="selected"
+                <?php endif; ?>> <?= $album['name'] ?>
             </option>
 
         <?php endforeach; ?>

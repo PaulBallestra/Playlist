@@ -30,7 +30,7 @@
     }
 
     //Fonction qui retourne vrai ou faux si il a réussi a supprimer l'artiste ayant pour id id
-    function delete($id)
+    function deleteArtist($id)
     {
         $db = dbConnect();
 
@@ -47,7 +47,7 @@
     }
 
     //Fonction qui ajoute un artiste
-    function add($informations)
+    function addArtist($informations)
     {
 
         $db = dbConnect();

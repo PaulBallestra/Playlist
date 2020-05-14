@@ -5,7 +5,7 @@
 function dbConnect(){
 
     try{
-        $db = new PDO('mysql:host=localhost;dbname=playlist_sql;charset=utf8', 'root', '',
+        $db = new PDO('mysql:host=localhost;dbname=db_playlist;charset=utf8', 'root', '',
             array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); //affichage des erreurs
     }
     catch (Exception $exception) //$exception contiendra les éventuels messages d’erreur

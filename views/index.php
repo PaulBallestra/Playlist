@@ -1,12 +1,12 @@
-<a href="admin/index.php"> <button> Administration </button> </a>
+<a href="admin/"> <button> Administration </button> </a>
 
 <table>
 <thead>
-  <tr>
-    <td>Titre</td>
-    <td>Artiste</td>
-    <td>Album</td>
-  </tr>
+    <tr>
+        <td>Titre</td>
+        <td>Artiste</td>
+        <td>Album</td>
+    </tr>
 </thead>
 <?php foreach($songs as $song): ?>
   <tr>

@@ -1,8 +1,8 @@
-<a href="index.php">retour à l'index</a>
+<a href="index.php">Retour à l'index</a>
 
 <p>Nom de l'album : <?= $album['name'] ?></p>
 
-<p>date : <?= $album['year'] ?></p>
+<p>Date de sortie : <?= $album['year'] ?></p>
 
 <p>Artiste : <a href="index.php?p=artist&artist_id=<?= $artist['id'] ?>"><?= $artist['name'] ?></a></p>
 
@@ -15,5 +15,5 @@ Chansons :
   <?php endforeach; ?>
   </ul>
 <?php else: ?>
-  <p>aucune chanson pour cet album</p>
+  <p>Aucune chansons pour cet album</p>
 <?php endif; ?>

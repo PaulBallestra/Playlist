@@ -1,1 +1,0 @@
-<h1> Ajout d'un nouvel artiste </h1>

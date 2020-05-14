@@ -9,7 +9,7 @@
 
 <?php endif; ?>
 
-<!-- Affichage  -->
+<!-- Affichage  des labels -->
 <?php foreach ($labels as $label) : ?>
 
     <p> <?= $label['name'] ?>

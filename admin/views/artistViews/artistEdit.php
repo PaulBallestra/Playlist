@@ -1,1 +1,0 @@
-Affichage des modifications a faire sur un artiste

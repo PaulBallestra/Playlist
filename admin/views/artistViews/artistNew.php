@@ -1,20 +1,12 @@
 <?php if(isset($_SESSION['message'])): ?>
 
     <div>
-        <?= $_SESSION['message'] ?>
+        <?= $_SESSION['message'] ?> <!-- Affichage d'un message session si il y en a un -->
     </div>
 
 <?php endif; ?>
 
-<?php if($_GET['action'] == 'edit'): ?>
-
-    <h2> Modification d'un artiste </h2>
-
-<?php else : ?>
-
-    <h2> Création d'un nouvel artiste </h2>
-
-<?php endif; ?>
+<?php if($_GET['action'] == 'edit'): ?> <h2> Modification d'un artiste </h2> <?php else : ?> <h2> Création d'un nouvel artiste </h2> <?php endif; ?>
 
 <form action="index.php?controller=artists&action=<?= isset($artist) || (isset($_SESSION['old_inputs']) && $_GET['action'] == 'edit') ? 'edit&id='.$_GET['id'] : 'add';  ?>" method="post" enctype="multipart/form-data">
 
@@ -31,7 +23,7 @@
 
             <!-- On le met en selected pour seulement celui qui est égal -->
             <option value=<?= $label['id'] ?>
-                <?php if(isset($artist) && $label['id'] == $artist['label_id']) : ?> selected="selected"
+                <?php if((isset($artist) && $label['id'] == $artist['label_id']) || (isset($_SESSION['old_inputs']) && $_SESSION['old_inputs']['label_id'] == $label['id'])) : ?> selected="selected"
                 <?php endif; ?>> <?= $label['name'] ?>
             </option> <!-- value est la valeur retournée en post -->
 

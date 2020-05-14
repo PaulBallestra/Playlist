@@ -1,1 +1,1 @@
-<div style="text-align: center;"> Header de l'admin </div>
+<div style="text-align: center;"><a href="../index.php">Page d'accueil (Utilisateur)</a> || <a href="index.php"> Dashboard (Admin) </a> </div>
