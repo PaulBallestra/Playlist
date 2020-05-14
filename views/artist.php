@@ -6,14 +6,27 @@
 
 <p>Biographie : <?= $artist['biography'] ?></p>
 
-Albums :
+<!-- Albums de l'artiste -->
+<p> Albums : </p>
 
 <?php if(sizeof(getAlbums($_GET['artist_id'])) > 0): ?>
-  <ul>
-  <?php foreach($albums as $album): ?>
-    <li><a href="index.php?p=albums&album_id=<?= $album['id'] ?>"><?= $album['name'] ?></a></li>
-  <?php endforeach; ?>
-  </ul>
+      <ul>
+          <?php foreach($albums as $album): ?>
+            <li><a href="index.php?p=albums&album_id=<?= $album['id'] ?>"><?= $album['name'] ?></a></li>
+          <?php endforeach; ?>
+      </ul>
 <?php else: ?>
-  <p>Aucun albums pour cet artiste</p>
+    <p>Aucun albums pour cet artiste</p>
 <?php endif; ?>
+
+<br>
+<!-- image de l'artiste -->
+<p> Image : </p>
+
+<?php if($artist['image'] != null): ?>
+    <img src="assets/images/artists/<?=$artist['image']?>" alt="Photo de profil de l'artiste <?= $artist['name'] ?>">
+<?php else: ?>
+    Aucune photo pour cet artiste
+<?php endif; ?>
+
+
