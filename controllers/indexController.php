@@ -1,8 +1,8 @@
 <?php
 
-require_once 'models/album.php';
-require_once 'models/artist.php';
-require_once 'models/song.php';
+require_once 'models/Album.php';
+require_once 'models/Artist.php';
+require_once 'models/Song.php';
 
 $songs = getSongs();
 

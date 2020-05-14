@@ -1,5 +1,6 @@
 <?php
 
+    //Fonction qui retourne tous les labels
     function getAllLabels()
     {
         $db = dbConnect();
@@ -11,6 +12,7 @@
 
     }
 
+    //Fonction qui retourne uniquement 1 seul label
     function getLabel($id)
     {
         $db = dbConnect();

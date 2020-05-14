@@ -1,6 +1,6 @@
 <?php
 
-    include 'models/Label.php';
+    require 'models/Label.php';
 
     require 'helpers.php';
 
@@ -8,20 +8,20 @@
 
         switch ($_GET['p']):
 
-            case 'album' :
+            case 'albums' :
                 require 'controllers/albumController.php';
                 break;
 
-            case 'artist' :
+            case 'artists' :
                 $labels = getAllLabels(); //on chope tous les labels
                 require 'controllers/artistController.php';
                 break;
 
-            case 'song' :
+            case 'songs' :
                 require 'controllers/songController.php';
                 break;
 
-            case 'label':
+            case 'labels':
                 require 'controllers/labelController.php';
                 break;
 

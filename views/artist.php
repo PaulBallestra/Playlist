@@ -11,7 +11,7 @@ Albums :
 <?php if(sizeof(getAlbums($_GET['artist_id'])) > 0): ?>
   <ul>
   <?php foreach($albums as $album): ?>
-    <li><a href="index.php?p=album&album_id=<?= $album['id'] ?>"><?= $album['name'] ?></a></li>
+    <li><a href="index.php?p=albums&album_id=<?= $album['id'] ?>"><?= $album['name'] ?></a></li>
   <?php endforeach; ?>
   </ul>
 <?php else: ?>

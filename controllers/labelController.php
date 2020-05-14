@@ -1,7 +1,13 @@
 <?php
 
-    require 'models/Label.php';
-    require 'models/Artist.php';
+    //Sécurité pour éviter qu'il essaie de rentrer via l'url
+    if(!isset($_GET['id']) || !ctype_digit($_GET['id'])){
+        header('Location:index.php');
+        exit;
+    }
+
+    require_once 'models/Label.php';
+    require_once 'models/Artist.php';
 
     //Soit une liste
     switch ($_GET['action']){

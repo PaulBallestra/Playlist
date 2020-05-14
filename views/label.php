@@ -1,17 +1,15 @@
-Affichage des labels
+<a href="index.php">Retour à l'index</a>
 
-    <br><br>
+<p>Nom du label : <?= $label['name'] ?></p>
 
-    Nom du label : <?= $label['name'] ?>
+Liste des groupes ayant pour label : <?= $label['name'] ?>
 
-    <br><br>
-
-    Liste des artistes liés au label <?= $label['name'] ?> :
-
-    <br>
-
-    <?php foreach($artists as $artist): ?>
-
-        <?= $artist['name'] ?><br>
-
-    <?php endforeach; ?>
+<?php if(sizeof($artists) > 0): ?>
+    <ul>
+        <?php foreach($artists as $artist): ?>
+            <li><a href="index.php?p=artists&artist_id=<?= $artist['id'] ?>"><?= $artist['name'] ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p>Aucun groupe pour ce label</p>
+<?php endif; ?>

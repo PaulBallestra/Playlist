@@ -27,8 +27,19 @@
         return false;
     }
 
+    function getArtistsByLabel($label_id)
+    {
+        $db = dbConnect();
+
+        $query = $db->prepare('SELECT * FROM artists WHERE label_id = ?');
+        $query->execute([$label_id]);
+
+        return $query->fetchAll();
+
+    }
+
     //Fonction qui retourne tous les artistes qui ont le label label_id
-    function getArtistsByLabel($label_id = false)
+    /*function getArtistsByLabel($label_id = false)
     {
         $db = dbConnect(); //Connexion a la db
 
@@ -45,4 +56,4 @@
 
 
         return $query->fetchAll();
-    }
+    }*/
