@@ -41,8 +41,21 @@
             unlink('../assets/images/artists/' . $currentArtist['image']);
 
         //Suppresion de l'artiste
-        $query = $db->prepare('DELETE FROM artists WHERE id=?');
+        $query = $db->prepare('DELETE FROM artists WHERE id = ?');
         $result = $query->execute([
+            $id
+        ]);
+
+        //Pas fifou puisqu'on fait appel plusieurs fois à la bd mais je n'ai pas réussi a le faire directement sur phpmyadmin
+        //Suppresion des albums et des chansons reliées à l'artiste
+        $delAlbums = $db->prepare('DELETE FROM albums WHERE artist_id = ?');
+        $delAlbums->execute([
+            $id
+        ]);
+
+        //Suppresion des chansons liées a l'artiste
+        $delSongs = $db->prepare('DELETE FROM songs WHERE artist_id = ?');
+        $delSongs->execute([
             $id
         ]);
 
@@ -55,34 +68,17 @@
 
         $db = dbConnect();
 
-        //Ici faire le traitement du fichier si il est présent
-        /*if(!empty($_FILES['image']['name'])){
-
-            $allowed_extensions = array('jpg', 'png');
-
-            $my_file_extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-
-            if(in_array($my_file_extension, $allowed_extensions)){
-
-                $new_file_name = md5(rand()) . '.' . $my_file_extension;
-                $destination = '../assets/images/artists/' . $new_file_name;
-                $res = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-
-            }
-        } */
-
         //Après traitement et upload, j'ai mon nom de fichier
         $query = $db->prepare('INSERT INTO artists (name, biography, label_id) VALUES(:name, :biography, :label_id)');
         $result = $query->execute([
             'name' => $informations['name'],
             'biography' => $informations['description'],
             'label_id' => $informations['label_id']
-            //'image' => $new_file_name
         ]);
 
         $artistId = $db->lastInsertId(); //retourne l'id de la dernière ligne insérée
 
-        insertArtistImage($artistId, $result);
+        insertArtistImage($artistId, $result); //Insertion de l'image
 
         return $result;
     }
@@ -111,16 +107,22 @@
     {
         $db = dbConnect();
 
+        $resultUploadImg = null;
+
         if($result && isset($_FILES['image']['tmp_name'])) { //Si l'ajout s'est bien passé ET qu'il a selectionné un fichier
 
-            $allowed_extensions = array('jpg', 'png', 'jpeg', 'gif');
+            //on vire l'ancienne image si il y en a une
+            if(getArtist($artistId)['image'] != null)
+                unlink('../assets/images/artists/' . getArtist($artistId)['image']);
+
+            $allowed_extensions = array('jpg', 'png', 'jpeg', 'PNG', 'JPG', 'JPEG');
             $my_file_extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
 
             if (in_array($my_file_extension, $allowed_extensions)) {
 
                 $new_file_name = $artistId . '.' . $my_file_extension;
                 $destination = '../assets/images/artists/' . $new_file_name;
-                $result = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+                $resultUploadImg = move_uploaded_file($_FILES['image']['tmp_name'], $destination);
 
                 //update du nom de l'image de l'enregistrement d'id
                 $query = $db->query("UPDATE artists SET image = '$new_file_name' WHERE id = $artistId");
@@ -130,7 +132,7 @@
             }
         }
 
-        return $result;
+        return $resultUploadImg;
 
     }
 
