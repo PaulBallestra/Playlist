@@ -11,6 +11,8 @@
             case 'list': //si on veut lister tous les albums
 
                 $albums = getAllAlbums(); //on récupère tous les albums
+
+                $title = 'Liste des Albums';
                 $view = 'views/albumViews/albumList.php';
                 //require 'views/albumViews/albumList.php'; //on affiche la view qui va tout afficher
                 break;
@@ -18,6 +20,8 @@
             case 'new':
 
                 $artists = getAllArtist();
+
+                $title = 'Création d\'un nouvel Album';
                 $view = 'views/albumViews/albumNew.php';
                 //require 'views/albumViews/albumNew.php';
                 break;
@@ -52,6 +56,8 @@
             case 'edit': //Si il veut update un album
 
                 $artists = getAllArtist();//on récupère tous les artistes
+
+                $title = 'Modification d\'un Album';
 
                 if(!empty($_POST)){
 

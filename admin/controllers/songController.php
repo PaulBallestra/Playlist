@@ -12,6 +12,8 @@
 
             case 'list': //Pour liste toutes les chansons
                 $songs = getAllSongs();
+
+                $title = 'Liste des Chansons';
                 $view = 'views/songViews/songList.php';
                 //require ('views/songViews/songList.php'); //on affiche la vue qui va afficher toutes les chansons
                 break;
@@ -21,6 +23,7 @@
                 $artists = getAllArtist(); //on doit choper tous les artistes
                 $albums = getAllAlbums(); //idem pour les albums
 
+                $title = 'Création d\'une nouvelle Chanson';
                 $view = 'views/songViews/songNew.php';
                 //require ('views/songViews/songNew.php');
                 break;
@@ -89,6 +92,7 @@
 
                     //require ('views/songViews/songNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
                     $view = 'views/songViews/songNew.php';
+                    $title = 'Modification d\'une Chanson';
                 }
 
                 break;

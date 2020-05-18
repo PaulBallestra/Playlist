@@ -10,11 +10,15 @@
             case 'list': //si on veut lister tous les labels
 
                 $labels = getAllLabels(); //on récupère tous les albums
+
+                $title = 'Liste des Labels';
                 $view = 'views/labelViews/labelList.php';
                 //require 'views/labelViews/labelList.php'; //on affiche la view qui va tout afficher
                 break;
 
             case 'new': //si on veut créer un nouveau label
+
+                $title = 'Création d\'un nouveau Label';
                 $view = 'views/labelViews/labelNew.php';
                 //require 'views/labelViews/labelNew.php'; //on affiche la view qui affiche le formulaire de création d'un label
                 break;
@@ -82,6 +86,7 @@
 
                     //require ('views/labelViews/LabelNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
                     $view = 'views/labelViews/labelNew.php';
+                    $title = 'Modification d\'un Label';
                 }
 
                 break;

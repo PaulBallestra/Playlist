@@ -2,7 +2,7 @@
 <html>
     <head>
 
-        <title> Afficher titre de la page </title>
+        <title> <?= $title ?> </title>
         <meta name="description" content="Contenu">
 
     </head>
