@@ -11,12 +11,16 @@
 
             case 'list': //Pour affichage de la liste d'artiste
                 $artists = getAllArtist();
+
+                $title = 'Liste des Artistes';
                 $view = 'views/artistViews/artistList.php';
                 //require ('views/artistViews/artistList.php');
                 break;
 
             case 'new': //Pour création d'un artiste
                 $labels = getAllLabels();//on récupère tous les labels
+
+                $title = 'Création d\'un nouvel Artiste';
                 $view = 'views/artistViews/artistNew.php';
                 //require ('views/artistViews/artistNew.php');
                 break;
@@ -85,6 +89,7 @@
 
 
                     //require ('views/artistViews/artistNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    $title = 'Modification d\'un Artiste';
                     $view = 'views/artistViews/artistNew.php';
                 }
 
