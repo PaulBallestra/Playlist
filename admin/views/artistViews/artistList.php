@@ -1,5 +1,3 @@
-<h2> Affichage de la liste complète des artistes : </h2>
-
 <?php if(isset($_SESSION['message'])): ?>
 
     <div>
@@ -8,6 +6,9 @@
 
 <?php endif; ?>
 
+<h2> Affichage de la liste complète des artistes : </h2>
+
+<!-- Listage de tous les artistes -->
 <?php foreach ($artists as $artist): ?>
 
     <p> <?= $artist['name'] ?>
@@ -18,5 +19,5 @@
         <a style="color: inherit;" href="index.php?controller=artists&action=delete&id=<?= $artist['id'] ?>"> Supprimer </a> <!-- Lien vers la suppresion d'un artiste -->
     </p>
 
-
 <?php endforeach; ?>
+

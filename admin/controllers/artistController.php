@@ -3,9 +3,6 @@
     require 'models/Artist.php';
     require 'models/Label.php';
 
-    require ('views/partials/header.php');
-    require ('views/partials/menu.php');
-
     //Si il y a une action envoyée
     if(isset($_GET['action'])):
 
@@ -14,12 +11,14 @@
 
             case 'list': //Pour affichage de la liste d'artiste
                 $artists = getAllArtist();
-                require ('views/artistViews/artistList.php');
+                $view = 'views/artistViews/artistList.php';
+                //require ('views/artistViews/artistList.php');
                 break;
 
             case 'new': //Pour création d'un artiste
                 $labels = getAllLabels();//on récupère tous les labels
-                require ('views/artistViews/artistNew.php');
+                $view = 'views/artistViews/artistNew.php';
+                //require ('views/artistViews/artistNew.php');
                 break;
 
             case 'add': //Pour création d'un artiste
@@ -85,7 +84,8 @@
                         $artist = getArtist($_GET['id']); //On stocke l'artiste renvoyé par la fonction getArtist
 
 
-                    require ('views/artistViews/artistNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    //require ('views/artistViews/artistNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    $view = 'views/artistViews/artistNew.php';
                 }
 
                 break;

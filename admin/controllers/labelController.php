@@ -2,9 +2,6 @@
 
     require 'models/Label.php';
 
-    require ('views/partials/header.php');
-    require ('views/partials/menu.php');
-
     //Si il a une action en cours
     if(isset($_GET['action'])){
 
@@ -13,11 +10,13 @@
             case 'list': //si on veut lister tous les labels
 
                 $labels = getAllLabels(); //on récupère tous les albums
-                require 'views/labelViews/labelList.php'; //on affiche la view qui va tout afficher
+                $view = 'views/labelViews/labelList.php';
+                //require 'views/labelViews/labelList.php'; //on affiche la view qui va tout afficher
                 break;
 
             case 'new': //si on veut créer un nouveau label
-                require 'views/labelViews/labelNew.php'; //on affiche la view qui affiche le formulaire de création d'un label
+                $view = 'views/labelViews/labelNew.php';
+                //require 'views/labelViews/labelNew.php'; //on affiche la view qui affiche le formulaire de création d'un label
                 break;
 
             case 'add': //Pour création d'un label
@@ -81,7 +80,8 @@
                         $label = getLabel($_GET['id']); //On stocke le label renvoyé par la fonction getLabel
 
 
-                    require ('views/labelViews/LabelNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    //require ('views/labelViews/LabelNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    $view = 'views/labelViews/labelNew.php';
                 }
 
                 break;

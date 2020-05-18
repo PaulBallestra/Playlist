@@ -4,9 +4,6 @@
     require 'models/Artist.php';
     require 'models/Album.php';
 
-    require ('views/partials/header.php');
-    require ('views/partials/menu.php');
-
     //On vérifie si on envoit une action
     if(isset($_GET['action'])){
 
@@ -15,7 +12,8 @@
 
             case 'list': //Pour liste toutes les chansons
                 $songs = getAllSongs();
-                require ('views/songViews/songList.php'); //on affiche la vue qui va afficher toutes les chansons
+                $view = 'views/songViews/songList.php';
+                //require ('views/songViews/songList.php'); //on affiche la vue qui va afficher toutes les chansons
                 break;
 
             case 'new': //Pour la création d'une nouvelle chansons
@@ -23,7 +21,8 @@
                 $artists = getAllArtist(); //on doit choper tous les artistes
                 $albums = getAllAlbums(); //idem pour les albums
 
-                require ('views/songViews/songNew.php');
+                $view = 'views/songViews/songNew.php';
+                //require ('views/songViews/songNew.php');
                 break;
 
             case 'add': //Pour l'ajout d'une nouvelle chanson
@@ -88,7 +87,8 @@
                     if(!isset($_SESSION['old_inputs'])) //On va chercher les infos de la chanson pour préremplir le formulaire
                         $song = getSong($_GET['id']); //On stocke la chansons renvoyée par la fonction getSong
 
-                    require ('views/songViews/songNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    //require ('views/songViews/songNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    $view = 'views/songViews/songNew.php';
                 }
 
                 break;

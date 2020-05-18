@@ -3,9 +3,6 @@
     require 'models/Album.php';
     require 'models/Artist.php';
 
-    require ('views/partials/header.php');
-    require ('views/partials/menu.php');
-
     //Si il a une action en cours
     if(isset($_GET['action'])){
 
@@ -14,13 +11,15 @@
             case 'list': //si on veut lister tous les albums
 
                 $albums = getAllAlbums(); //on récupère tous les albums
-                require 'views/albumViews/albumList.php'; //on affiche la view qui va tout afficher
+                $view = 'views/albumViews/albumList.php';
+                //require 'views/albumViews/albumList.php'; //on affiche la view qui va tout afficher
                 break;
 
             case 'new':
 
                 $artists = getAllArtist();
-                require 'views/albumViews/albumNew.php';
+                $view = 'views/albumViews/albumNew.php';
+                //require 'views/albumViews/albumNew.php';
                 break;
 
             case 'add': //Pour création d'un album
@@ -86,7 +85,8 @@
                         $album = getAlbum($_GET['id']); //On stocke l'artiste renvoyé par la fonction getAlbum
 
 
-                    require ('views/albumViews/albumNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    //require ('views/albumViews/albumNew.php'); //Modification donc il y a déjà les anciennes infos dans le formulaire
+                    $view = 'views/albumViews/albumNew.php';
                 }
 
                 break;

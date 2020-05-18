@@ -11,4 +11,5 @@
     $nbSongs = getNumberOfSongs();
     $nbLabels = getNumberOfLabels();
 
-    require 'views/index.php';
+    $view = 'views/index.php';
+    //require 'views/index.php';
